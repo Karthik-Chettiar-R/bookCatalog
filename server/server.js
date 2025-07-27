@@ -15,8 +15,11 @@ const app = express();
 const frontendURL = "https://rad-liger-6d7912.netlify.app"; // ❗ Replace with your actual frontend URL
 
 const corsOptions = {
-  origin: frontendURL,
-  optionsSuccessStatus: 200 // For legacy browser support
+  origin: [
+    "https://rad-liger-6d7912.netlify.app", 
+    "https://rad-liger-6d7912.netlify.app/"
+  ],
+  optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
