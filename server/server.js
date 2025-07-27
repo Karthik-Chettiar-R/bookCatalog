@@ -12,7 +12,7 @@ connectDB();
 const app = express();
 
 // Middleware
-const frontendURL = "https://rad-liger-6d7912.netlify.app/"; // ❗ Replace with your actual frontend URL
+const frontendURL = "https://rad-liger-6d7912.netlify.app"; // ❗ Replace with your actual frontend URL
 
 const corsOptions = {
   origin: frontendURL,
