@@ -50,7 +50,7 @@ const handleClose = () => {
     // ... your validation logic ...
 
     try {
-        const response = await fetch(`${BACKEND_URL}/users/register`, {
+        const response = await fetch(`${BACKEND_URL}/api/users/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
