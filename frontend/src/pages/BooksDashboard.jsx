@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+const BACKEND_URL=import.meta.env.VITE_BACKEND_URL
+
 function BooksDashboard() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -10,7 +12,7 @@ function BooksDashboard() {
     const fetchBooks = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:5000/api/books');
+        const response = await fetch(`${BACKEND_URL}/api/books`);
         if (!response.ok) {
           throw new Error('Failed to fetch books');
         }

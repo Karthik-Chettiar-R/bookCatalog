@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
+const BACKEND_URL=import.meta.env.VITE_BACKEND_URL
+
 
 function RegisterPage({ onClose }) {
   const navigate = useNavigate();
 
 const handleClose = () => {
-  navigate(-1); // or navigate(-1) to go back
+  navigate(-1); 
 };
 
   
@@ -48,7 +50,7 @@ const handleClose = () => {
     // ... your validation logic ...
 
     try {
-        const response = await fetch('http://localhost:5000/api/users/register', {
+        const response = await fetch(`${BACKEND_URL}/users/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -68,7 +70,7 @@ const handleClose = () => {
         }
 
         console.log('User registered:', data);
-        // TODO: Save the user token (data.token) and redirect
+        
         localStorage.setItem('userInfo', JSON.stringify(data));
         navigate('/books');
 
@@ -81,7 +83,7 @@ const handleClose = () => {
   return (
     <div className="fixed inset-0 bg-[#00272B]/70 flex items-center justify-center z-50">
       <div className="relative bg-[#457B9D] text-white p-6 rounded-lg w-11/12 max-w-md shadow-lg">
-        {/* ❌ Close Button */}
+      
         <button
            onClick={handleClose}
           className="absolute top-2 right-3 text-white text-xl hover:text-red-300"
@@ -89,12 +91,12 @@ const handleClose = () => {
           ❌
         </button>
 
-        {/* Inner Form (unchanged) */}
+        
         <div className="w-full sm:max-w-sm md:max-w-md mx-auto mt-0 p-6 rounded-2xl shadow-lg bg-[#457B9D] text-white transition-all duration-300 ease-in-out">
           <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Full Name */}
+           
             <div>
               <label htmlFor="name" className="block mb-1">
                 Full Name<span className="text-red-300">*</span>
@@ -114,7 +116,7 @@ const handleClose = () => {
               )}
             </div>
 
-            {/* Email */}
+          
             <div>
               <label htmlFor="email" className="block mb-1">
                 Email<span className="text-red-300">*</span>
@@ -134,7 +136,7 @@ const handleClose = () => {
               )}
             </div>
 
-            {/* Password */}
+           
             <div>
               <label htmlFor="password" className="block mb-1">
                 Password<span className="text-red-300">*</span>
@@ -156,7 +158,7 @@ const handleClose = () => {
               )}
             </div>
 
-            {/* Confirm Password */}
+            
             <div>
               <label htmlFor="confirmPassword" className="block mb-1">
                 Confirm Password<span className="text-red-300">*</span>
@@ -176,7 +178,7 @@ const handleClose = () => {
               )}
             </div>
 
-            {/* Toggle Password Visibility */}
+           
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
@@ -187,7 +189,7 @@ const handleClose = () => {
               <label htmlFor="showPassword">Show Password</label>
             </div>
 
-            {/* Role Selection */}
+            
             <div>
               <label htmlFor="role" className="block mb-1">
                 Role (optional)
@@ -206,7 +208,7 @@ const handleClose = () => {
               </select>
             </div>
 
-            {/* Terms Checkbox */}
+     
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
@@ -224,7 +226,7 @@ const handleClose = () => {
               <p className="text-sm text-red-200 animate-fade-in">{errors.agree}</p>
             )}
 
-            {/* Submit Button */}
+           
             <button
               type="submit"
               className="w-full bg-[#593D3B] hover:bg-[#C7F0BD] hover:text-black text-white font-semibold py-2 rounded transition duration-300"

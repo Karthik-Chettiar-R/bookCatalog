@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const BACKEND_URL=import.meta.env.VITE_BACKEND_URL
+
 function AddBook() {
   const navigate = useNavigate();
 
@@ -57,7 +59,7 @@ function AddBook() {
     bookData.append('coverImage', coverImageFile);
 
     try {
-      const response = await fetch('http://localhost:5000/api/books', {
+      const response = await fetch(`${BACKEND_URL}/api/books`, {
         method: 'POST',
         body: bookData,
       });

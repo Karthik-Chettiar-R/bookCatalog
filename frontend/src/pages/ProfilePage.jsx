@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
+const BACKEND_URL=import.meta.env.VITE_BACKEND_URL
+
 function ProfilePage() {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState(null);
@@ -22,7 +24,7 @@ function ProfilePage() {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/users/profile`, {
+      const response = await fetch(`${BACKEND_URL}/api/users/profile`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${userInfo.token}`, // Send auth token

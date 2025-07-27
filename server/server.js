@@ -8,10 +8,18 @@ import userRoutes from './routes/userRoutes.js';
 // Connect to Database
 connectDB();
 
+
 const app = express();
 
 // Middleware
-app.use(cors());
+const frontendURL = "https://rad-liger-6d7912.netlify.app/"; // ❗ Replace with your actual frontend URL
+
+const corsOptions = {
+  origin: frontendURL,
+  optionsSuccessStatus: 200 // For legacy browser support
+};
+
+app.use(cors(corsOptions));
 app.use(express.json()); // To parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // To parse URL-encoded bodies
 

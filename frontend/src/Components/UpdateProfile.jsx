@@ -5,7 +5,7 @@ function UpdateProfile({ onClose }) {
   const navigate = useNavigate();
 
   const handleClose = () => {
-    navigate(-1); // Go back to previous page
+    navigate(-1); 
   };
 
   const [showPassword, setShowPassword] = useState(false);
@@ -13,14 +13,14 @@ function UpdateProfile({ onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Profile updated!");
-    // TODO: Send form data to backend (optional)
+   
     navigate("/home");
   };
 
   return (
     <div className="fixed inset-0 bg-[#00272B]/70 flex items-center justify-center z-50">
       <div className="relative bg-[#457B9D] text-white p-6 rounded-lg w-11/12 max-w-md shadow-lg">
-        {/* ❌ Close Button */}
+        
         <button
           onClick={handleClose}
           className="absolute top-2 right-3 text-white text-xl hover:text-red-300"
@@ -28,12 +28,12 @@ function UpdateProfile({ onClose }) {
           ❌
         </button>
 
-        {/* Inner Form */}
+       
         <div className="p-6 rounded-2xl shadow-md bg-[#457B9D] text-white transition-all duration-300 ease-in-out">
           <h2 className="text-2xl font-bold mb-6 text-center">Update Profile</h2>
 
           <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Name */}
+            
             <div>
               <label className="block mb-1 font-medium">
                 Name<span className="text-red-300">*</span>
@@ -46,7 +46,7 @@ function UpdateProfile({ onClose }) {
               />
             </div>
 
-            {/* Email */}
+            
             <div>
               <label className="block mb-1 font-medium">
                 Email<span className="text-red-300">*</span>
@@ -59,7 +59,7 @@ function UpdateProfile({ onClose }) {
               />
             </div>
 
-            {/* Current Password */}
+         
             <div>
               <label className="block mb-1 font-medium">
                 Current Password<span className="text-red-300">*</span>
@@ -81,7 +81,7 @@ function UpdateProfile({ onClose }) {
               </div>
             </div>
 
-            {/* New Password */}
+           
             <div>
               <label className="block mb-1 font-medium">New Password</label>
               <input
@@ -93,7 +93,7 @@ function UpdateProfile({ onClose }) {
 
       
 
-            {/* Submit */}
+            
             <button
               type="submit"
               className="w-full bg-[#593D3B] hover:bg-[#C7F0BD] hover:text-black text-white font-semibold py-2 rounded transition-all duration-200"

@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
+const BACKEND_URL=import.meta.env.VITE_BACKEND_URL
+
 function BookDetails() {
-  const { id } = useParams(); // Get book ID from URL
+  const { id } = useParams(); 
   const navigate = useNavigate();
   
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  // Fetch this specific book's data
+
   useEffect(() => {
     const fetchBook = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:5000/api/books/${id}`);
+        const response = await fetch(`${BACKEND_URL}/api/books/${id}`);
         if (!response.ok) {
           throw new Error('Book not found.');
         }
@@ -35,7 +37,7 @@ function BookDetails() {
       return;
     }
     try {
-      const response = await fetch(`http://localhost:5000/api/books/${id}`, {
+      const response = await fetch(`${BACKEND_URL}/api/books/${id}`, {
         method: 'DELETE',
       });
       if (!response.ok) {

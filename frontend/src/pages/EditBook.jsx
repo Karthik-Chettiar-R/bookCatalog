@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+const BACKEND_URL=import.meta.env.VITE_BACKEND_URL
+
 function EditBook() {
   const { id } = useParams(); // Get the book ID from the URL
   const navigate = useNavigate();
@@ -17,11 +19,11 @@ function EditBook() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  // 1. Fetch the existing book data when the component loads
+ 
   useEffect(() => {
     const fetchBookData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/books/${id}`);
+        const response = await fetch(`${BACKEND_URL}/api/books/${id}`);
         if (!response.ok) throw new Error('Could not fetch book data.');
         const data = await response.json();
         setFormData({
@@ -50,21 +52,21 @@ function EditBook() {
     setCoverImageFile(e.target.files[0]);
   };
 
-  // 2. Handle the form submission to UPDATE the book
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const bookData = new FormData();
     
-    // Append all text fields from state
+
     Object.keys(formData).forEach(key => bookData.append(key, formData[key]));
     
-    // If a new image was selected, add it to the form data
+    
     if (coverImageFile) {
       bookData.append('coverImage', coverImageFile);
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/books/${id}`, {
+      const response = await fetch(`${BACKEND_URL}/api/books/${id}`, {
         method: 'PUT',
         body: bookData,
       });
